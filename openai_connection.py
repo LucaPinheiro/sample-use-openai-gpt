@@ -10,7 +10,7 @@ def load_openai(system_prompt, user_prompt):
         raise ValueError("API Key for OpenAI not found in environment variables.")
     
     client = OpenAI(api_key=api_key)
-    model = 'gpt-4-turbo'
+    model = os.getenv("OPENAI_MODEL")
     
     try:
         response = client.chat.completions.create(
@@ -18,7 +18,8 @@ def load_openai(system_prompt, user_prompt):
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
             ],
-            model=model
+            model=model,
+            max_tokens=200,
         )
         
         print(response.choices[0].message.content)
