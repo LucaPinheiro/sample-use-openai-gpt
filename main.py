@@ -1,4 +1,4 @@
-from openai import OpenAI
+from openai_connection import OpenAI
 from dotenv import load_dotenv
 import os
 
@@ -16,7 +16,11 @@ response = client.chat.completions.create(
             "content": "Liste três produtos sustentáveis"
         }
     ],
-    model='gpt-4-turbo'
+    model='gpt-4-turbo',
+    temperature=0,
+    max_tokens=200,
+    n = 3
 )
 
-print(response.choices[0].message.content)
+for count in range(3):
+    print(response.choices[count].message.content)
