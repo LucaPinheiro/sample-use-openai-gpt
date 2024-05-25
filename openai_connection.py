@@ -23,6 +23,7 @@ def load_openai(system_prompt, user_prompt):
             max_tokens=200,
         )
         response_text = response.choices[0].message.content
+        print(response.choices[0].message.content)
         print(response_text)
         # Passe os textos de entrada e saída para calcular os custos corretamente
         calculate_costs(model, system_prompt + user_prompt, response_text)
@@ -54,7 +55,7 @@ Exemplo de saída esperada:
 
 Certifique-se de capturar todas as informações relevantes e formatá-las de maneira clara e organizada.
 """
-user_prompt = "vou ter no dia 28 uma reunião sobre o meu estágio falando da minha efetivação umas 14 h da tarde certo"
+user_prompt = "salva que dia 15 do 3 vou ter consulta com o Dr. Carlos na clínica da rua 25 as 5 da tarde"
 
 # Chama a função load_openai com os prompts definidos
 load_openai(prompt, user_prompt)
